@@ -1,0 +1,6 @@
+telebot
+sqlite3
+requests
+json
+dotenv
+os
