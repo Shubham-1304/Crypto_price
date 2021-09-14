@@ -53,11 +53,10 @@ def getMessage():
     app.process_new_updates([telebot.types.Update.de_json(request.stream.read().decode("utf-8"))])
     return "0",200
 
-@server.route('/')
-def webhook():
+#def webhook():
     #app.remove_webhook()
-    app.set_webhook(url="https://crypto--price.herokuapp.com/"+"1972543398:AAFM_GbGtBhBRYIACiVRwDG0I9Lk51bKUrY")
-    return "0",200
+#    app.set_webhook(url="https://crypto--price.herokuapp.com/"+"1972543398:AAFM_GbGtBhBRYIACiVRwDG0I9Lk51bKUrY")
+#    return "0",200
 
 if __name__=='__main__':
     server.debug = True
