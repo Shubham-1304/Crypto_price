@@ -56,7 +56,7 @@ def getMessage():
 @server.route('/')
 def webhook():
     #app.remove_webhook()
-    app.set_webhook(url='https://crypto--price.herokuapp.com/'+os.getenv("token2"))
+    app.set_webhook(url='https://crypto--price.herokuapp.com/'+"1972543398:AAFM_GbGtBhBRYIACiVRwDG0I9Lk51bKUrY")
     return "0",200
 
 if __name__=='__main__':
