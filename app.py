@@ -2,11 +2,12 @@ import telebot
 import sqlite3
 import requests
 import json
+from flask import Flask,request
 from dotenv import load_dotenv
 import os
 
 load_dotenv()
-
+server=Flask(__name__)
 def cwc(msg):
     curl="https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest"
     params={'symbol':msg,'convert':'INR'}
@@ -47,4 +48,16 @@ def crypto(message):
         pass
         #print("No Data")
 
-app.polling()
+@server.route('/'+os.getenv("token2"),methods=['POST'])
+def getMessage():
+    app.process_new_updates([telebot.types.Update.de_json(request.stream.read().decode("utf-8"))])
+    return "0",200
+
+@server.route('/')
+def webhook():
+    app.remove_webhook()
+    app.set_webhook(url=+os.getenv("token2"))
+    return "0",200
+
+if __name__=='__main__':
+    server.url(host="0.0.0.0",port=int(os.environ.get('PORT',5000)))
