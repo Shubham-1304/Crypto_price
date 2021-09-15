@@ -94,7 +94,8 @@ def getMessage():
             connection.close()
         except:
             pass
-    #return "hello",201
+    app.polling()
+    return "hello",201
 #def webhook():
     #app.remove_webhook()
 #    app.set_webhook(url="https://crypto--price.herokuapp.com/"+"1972543398:AAFM_GbGtBhBRYIACiVRwDG0I9Lk51bKUrY")
