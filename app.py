@@ -82,11 +82,9 @@ def getMessage():
 
     @app.message_handler(func=lambda m:True)
     def crypto(message):
-        try:
-            price=cwc(message.text)
-            app.reply_to(message,f"{price}")
-        except:
-            app.reply_to(message,"wrong input")
+        price=cwc(message.text)
+        app.reply_to(message,f"{price}")
+        #app.reply_to(message,"wrong input")
         try:
             connection=sqlite3.connect('data.db')
             cursor=connection.cursor()
@@ -96,7 +94,7 @@ def getMessage():
             connection.close()
         except:
             pass
-    return "hello",201
+    #return "hello",201
 #def webhook():
     #app.remove_webhook()
 #    app.set_webhook(url="https://crypto--price.herokuapp.com/"+"1972543398:AAFM_GbGtBhBRYIACiVRwDG0I9Lk51bKUrY")
