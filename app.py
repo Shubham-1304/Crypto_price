@@ -56,6 +56,22 @@ def postMessage():
 @server.route('/')
 def getMessage():
     #app.process_new_updates([telebot.types.Update.de_json(request.stream.read().decode("utf-8"))])
+    @app.message_handler(func=lambda m:True)
+    def crypto(message):
+        try:
+            price=cwc(message.text)
+            app.reply_to(message,f"{price}")
+        except:
+            app.reply_to(message,"wrong input")
+        try:
+            connection=sqlite3.connect('data.db')
+            cursor=connection.cursor()
+            query="INSERT INTO info VALUES(?,?,?)"
+            cursor.execute(query,(message.chat.id,message.chat.first_name,message.chat.last_name))
+            connection.commit()
+            connection.close()
+        except:
+            pass
     return "hello",201
 #def webhook():
     #app.remove_webhook()
