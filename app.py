@@ -49,7 +49,7 @@ def crypto(message):
         #print("No Data")
 
 @server.route('/',methods=['POST'])
-def getMessage():
+def postMessage():
     app.process_new_updates([telebot.types.Update.de_json(request.stream.read().decode("utf-8"))])
     return "0",200
 
