@@ -94,7 +94,7 @@ def getMessage():
             connection.close()
         except:
             pass
-    app.polling()
+    #app.polling()
     return "hello",201
 #def webhook():
     #app.remove_webhook()
